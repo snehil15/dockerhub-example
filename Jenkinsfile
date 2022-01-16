@@ -1,12 +1,17 @@
 pipeline {
   agent any
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('NASINGH_DOCKERHUB_CREDENTIALS')
+    DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
   }
   stages {
     stage('Setup') {
       steps {
         sh 'chmod +x ./scripts/*'
+      }
+    }
+    stage('Clean') {
+      steps {
+        sh './scripts/clean.sh'
       }
     }
     stage('Build') {
@@ -22,6 +27,11 @@ pipeline {
     stage('Push') {
       steps {
         sh './scripts/push.sh'
+      }
+    }
+    stage('Test'){
+      steps {
+        sh './scripts/test_run.sh'
       }
     }
     stage('Logout') {
