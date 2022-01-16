@@ -20,10 +20,10 @@ pipeline {
         sh './scripts/push.sh'
       }
     }
-  }
-  post {
-    always {
-      sh './scripts/logout.sh'
+    stage('Logout') {
+      steps {
+        sh './scripts/logout.sh'
+      }
     }
   }
 }
