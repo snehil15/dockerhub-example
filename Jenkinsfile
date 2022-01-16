@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     DOCKERHUB_CREDENTIALS_USR = 'narendra3425'
-    DOCKERHUB_CREDENTIALS = credentials('nasingh#2022')
+    DOCKERHUB_CREDENTIALS_PSW = credentials('nasingh#2022')
   }
   stages {
     stage('Build') {
